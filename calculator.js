@@ -1,136 +1,80 @@
-// import module
 
-const readline = require('readline');
 
-//define tax rates functions
-
-function calculateTax(income){
-    const taxSlabs = [
-        //tax rates on income
-        {limit: 24000, rate: 0.1},
-        {limit: 32333, rate: 0.25},
-        {limit: 500000, rate: 0.3},
-        {limit: 800000, rate: 0.35},
-    ];
-
-    //initialize tax 0
-
-    let tax = 0;
-
-    // initialize remainder to total income
-    let remIncome = income;
-
-    // iterate through tax slab to check remaining taxable income,calculate the tax
-
-        for (const slab of taxSlabs){
-            
-            if(remIncome <=0) break;
-            
-            const taxableAmount =Math.min(remIncome, slab.limit);
-            
-            tax+= taxableAmount *slab.rate;
+    function calculateNetSalary() {
+        const basicSalaryInput = document.getElementById("basicSalaryInput");
+        const benefitsInput = document.getElementById("benefitsInput");
+        const netSalaryOutput = document.getElementById("netSalaryOutput");
     
-            
-            remIncome -= taxableAmount
-        }
+        const basicSalary = parseFloat(basicSalaryInput.value);
+        const benefits = parseFloat(benefitsInput.value);
     
-        //return the total tax calculation
-        return tax;
-    }
-    
-    //define NHIF rates
-    function calculateNHIFDeductions(grossPay){
-        const nhifRates = [
-            {limit:5999, deduction: 150},
-            {limit:11999, deduction: 400},
-            {limit:29999, deduction: 850},
-            {limit:100000, deduction: 1700},
-    
-        ];
-        for (const rate of nhifRates){
-            if (grossPay<= rate.limit){
-                return rate.deduction;
-            }
-        }
-        //exceed the highest limit
-       return nhifRates[nhifRates.length - 1].deduction;
-    
-    }
-    
-    
-    //define nssf rates 
-    function calculateNSSFContributions(pensionalPay){
-        //employee contribution rate for tiers
-        const tierIRate = 0.06;
-        
-        const tierIILowestLimit = 7001; 
-    
-    if(pensionalPay <= tierIILowestLimit){
-       
-        return pensionalPay * tierIRate;
-    } else {
-        
-        return tierIILowestLimit * tierIRate;
-    }
-    }
-    
-    //calculate the net salary, tax, NHIF deductions, NSSF deductions
-    function calculateNetSalary(basicSalary, benefits){
-        
+        const payee = calculatePayee(basicSalary);
+        const nhif = calculateNHIFDeductions(basicSalary);
+        const nssf = calculateNSSFContributions(basicSalary);
         const grossSalary = basicSalary + benefits;
-        
-        const tax = calculateTax(grossSalary);
-        
-        const NHIFDeductions = calculateNHIFDeductions(grossSalary);
-        
-        const NSSFDeductions = calculateNSSFContributions(basicSalary);
-        
-        const netSalary = grossSalary - tax - NHIFDeductions - NSSFDeductions;
+        const deductions = payee + nhif + nssf;
+        const netSalary = grossSalary - deductions;
     
-        //results
-        return{
-            grossSalary,
-            tax,
-            NHIFDeductions,
-            NSSFDeductions,
-            netSalary
-        };
+        netSalaryOutput.textContent = "Net Salary: " + netSalary;
     }
     
-    //function to get the user input
-    function getUserInput(question){
-        const rl = readline.createInterface({
-            input: process.stdin,
-            output: process.stdout
-    
-        });
-     
-     return new Promise((resolve) => {
-        rl.question(question, (answer) =>{
-            rl.close();
-            resolve(parseFloat(answer));
-        });
-     });
+    function calculatePayee(basicSalary) {
+         if (basicSalary <= 12298) {
+                return 0;
+            } else if (basicSalary <= 23885) {
+                return (basicSalary - 12298) * 0.1;
+            } else if (basicSalary <= 35472) {
+                return 1159 + (basicSalary - 23885) * 0.15;
+            } else if (basicSalary <= 47059) {
+                return 2962 + (basicSalary - 35472) * 0.2;
+            } else if (basicSalary <= 58646) {
+                return 5282 + (basicSalary - 47059) * 0.25;
+            } else {
+                return 9197 + (basicSalary - 58646) * 0.3;
+            }
     }
-     //function to run the program
-     async function run(){
-     
     
-        const basicSalary = await getUserInput("your basic salary = ");
+    function calculateNHIFDeductions(basicSalary) {
+         if (basicSalary <= 5999) {
+                return 150;
+            } else if (basicSalary <= 7999) {
+                return 300;
+            } else if (basicSalary <= 11999) {
+                return 400;
+            } else if (basicSalary <= 14999) {
+                return 500;
+            } else if (basicSalary <= 19999) {
+                return 600;
+            } else if (basicSalary <= 24999) {
+                return 750;
+            } else if (basicSalary <= 29999) {
+                return 850;
+            } else if (basicSalary <= 34999) {
+                return 900;
+            } else if (basicSalary <= 39999) {
+                return 950;
+            } else if (basicSalary <= 44999) {
+                return 1000;
+            } else if (basicSalary <= 49999) {
+                return 1100;
+            } else if (basicSalary <= 59999) {
+                return 1200;
+            } else if (basicSalary <= 69999) {
+                return 1300;
+            } else if (basicSalary <= 79999) {
+                return 1400;
+            } else if (basicSalary <= 89999) {
+                return 1500;
+            } else if (basicSalary <= 99999) {
+                return 1600;
+            } else {
+                return 1700;
+            }
+    }
     
-      
-        const benefits = await getUserInput("Your Benefits = ");
-    
+    function calculateNSSFContributions(basicSalary) {
+        return Math.min(200, basicSalary * 0.06);
         
-        const salaryDetails = calculateNetSalary(basicSalary, benefits);
+    }
     
-      
-        console.log("Gross = ", salaryDetails.grossSalary);
-        console.log("Tax = ", salaryDetails.tax);
-        console.log("NHIF Ded = ", salaryDetails.NHIFDeductions);
-        console.log("NSSF Ded = ", salaryDetails.NSSFDeductions);
-        console.log("Net = ", salaryDetails.netSalary);
-     }
-    
-     run();
 
