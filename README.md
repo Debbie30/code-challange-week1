@@ -1,56 +1,70 @@
-# Speeding Ticket System
+# Project Name : CODE CHALLANGE WEEK-1
+******
 
-This program calculates demerit points for speeding violations and checks if a driver's license should be suspended.
+### Author: Deborah Cherotich (March 15th, 2024)
+****
 
-## Description
+## Project Description
+This project consists of three JavaScript files, one HTML file, and a License file. The JavaScript files contain scripts for various functionalities, the HTML file is the main interface, and the License file contains licensing information.
 
-The program takes as input the speed of a car. If the speed is less than 70 km/h, it prints "Ok". Otherwise, for every 5 km/h above the speed limit (70 km/h), it gives the driver one demerit point and prints the total number of demerit points. If the driver accumulates more than 12 points, the program prints "License suspended".
+******
+## Screenshots
+![image](https://github.com/Debbie30/code-challange-week1/assets/104517265/464ddc84-3477-4a82-9f32-408c434d0e04)
 
-## Usage
+## File Descriptions
 
-1. Clone this repository to your local machine.
-2. Run the `speeding_ticket.js` file using Node.js.
-3. Enter the speed of the car when prompted.
+### 1. index.html
+This file contains the main HTML structure for the project. It includes elements for displaying the portfolio, such as headings, images, and sections.
 
-```bash
-node speeding_ticket.js
-Points: 2
-# Salary Calculation Program (JavaScript)
+### 2. calculateGrade.js
+This JavaScript file contains a function to calculate the grade based on student marks input. It utilizes destructuring to declare animal sounds and traditional animal names.
 
-This JavaScript program calculates an individual’s net salary based on the provided inputs of basic salary and benefits. It calculates the payee (Tax), NHIF deductions, NSSFDeductions, gross salary, and net salary using the tax rates from KRA and deduction rates from NHIF and NSSF.
+### 3. calculateDemeritPoints.js
+This JavaScript file contains a function to calculate demerit points for speeding violations. It takes the speed input from the user and calculates the demerit points based on predefined criteria.
 
-## Description
+### 4. calculateNetSalary.js
+This JavaScript file contains a function to calculate an individual's net salary based on basic salary and benefits input. It calculates payee (tax), NHIF deductions, NSSF deductions, gross salary, and net salary.
 
-The program takes the basic salary and benefits as inputs. It then calculates the Pay As You Earn (PAYE) tax (payee), NHIF deductions, NSSF deductions, gross salary, and net salary based on the provided inputs.
+### 5. styles.css
+`This CSS file is providing styling to the HTML elements.
 
-## Usage
+### 6. LICENSE
+This file contains the licensing information for the project. It specifies the terms under which the project is distributed and used.
 
-1. Clone this repository to your local machine.
-2. Open the `salary_calculation.js` file in a text editor.
-3. Adjust the code if necessary.
-4. Run the `salary_calculation.js` file using a JavaScript environment (e.g., Node.js).
+******
 
-```bash
-node calculator.js
-# Student Grade Calculation Program (JavaScript)
+## SetUp Instruction
+### Requirements
+- HTML
+- CSS
+- Text editor (e.g., Visual Studio Code)
 
-This JavaScript program prompts the user to input student marks and calculates the corresponding grade based on the marks provided.
+### Getting Files
+1. Clone the repository
+2. Open the project directory in your text editor
 
-## Description
+### How To Run It
+1. Open index.html in a web browser
 
-The program utilizes the `readline` module to create an interface for taking user input from the console. It defines a function `calculateGrade` to determine the grade based on the input marks according to the following criteria:
+******
 
-- A > 79
-- B - 60 to 79
-- C - 59 to 49
-- D - 40 to 49
-- E - less than 40.
+## Dependencies
+- Google fonts
 
-## Usage
+*****
 
-1. Copy the provided JavaScript code into your JavaScript project file.
-2. Run the JavaScript file using a JavaScript environment (e.g., Node.js).
-3. Enter the student's marks when prompted.
+## Technologies Used
+1. HTML
+2. CSS
+3. JavaScript
 
-```bash
-node your_program_name.js
+*****
+
+## Contact Information
+* Email: cherotichdebby11@gmail.com
+
+*****
+
+## [License](LICENSE)
+MIT License
+Copyright (c) 2024 Deborah Cherotich
