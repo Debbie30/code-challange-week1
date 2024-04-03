@@ -1,5 +1,5 @@
 
-
+// Function to calculate net salary
     function calculateNetSalary() {
         const basicSalaryInput = document.getElementById("basicSalaryInput");
         const benefitsInput = document.getElementById("benefitsInput");
@@ -17,7 +17,7 @@
     
         netSalaryOutput.textContent = "Net Salary: " + netSalary;
     }
-    
+    // Function to calculate PAYE tax
     function calculatePayee(basicSalary) {
          if (basicSalary <= 12298) {
                 return 0;
@@ -33,7 +33,7 @@
                 return 9197 + (basicSalary - 58646) * 0.3;
             }
     }
-    
+    // Function to calculate NHIF deductions
     function calculateNHIFDeductions(basicSalary) {
          if (basicSalary <= 5999) {
                 return 150;
@@ -71,7 +71,7 @@
                 return 1700;
             }
     }
-    
+    // Function to calculate NSSF deductions
     function calculateNSSFContributions(basicSalary) {
         return Math.min(200, basicSalary * 0.06);
         
