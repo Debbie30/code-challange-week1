@@ -4,10 +4,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="index.css">
 </head>
 <body>
-    <script src="calculator.js"></script>
+    
+    <div class="container">
+        <h1>Browse programs</h1>
+
+        <!--program 1-->
+
+        <div class="program">
+            <h2>Student Grade Calculator</h2>
+            <label for="marksInput">Enter student marks:</label>
+            <input type="number" id="marksInput" placeholder="Enter marks">
+            <button onclick="calculateGrade()">Calculate Grade</button>
+            <p id="gradeOutput"></p>
+        </div>
+
+        <!-- Program 2 -->
+        <div class="program">
+            <h2>Speeding Ticket System</h2>
+            <div class="form-group">
+                <label for="speedInput">Enter speed (km/h):</label>
+                <input type="number" id="speedInput" placeholder="Enter speed">
+            </div>
+            <button onclick="calculateDemeritPoints()">Calculate Demerit Points</button>
+            <p id="pointsOutput"></p>
+        </div>
+
+        <!-- Program 3 -->
+        <div class="program">
+            <h2>Salary Calculation Program</h2>
+            <div class="form-group">
+                <label for="basicSalaryInput">Enter basic salary:</label>
+                <input type="number" id="basicSalaryInput" placeholder="Enter basic salary">
+            </div>
+            <div class="form-group">
+                <label for="benefitsInput">Enter benefits:</label>
+                <input type="number" id="benefitsInput" placeholder="Enter benefits">
+            </div>
+            <button onclick="calculateNetSalary()">Calculate Net Salary</button>
+            <p id="netSalaryOutput"></p>
+        </div>    
+    </div>
+    
+     <script src="student.js"></script>
     <script src="speed.js"></script>
-    <script src="student.js"></script>
+    <script src="calculator.js"></script>
+    
 </body>
 </html>
