@@ -1,11 +1,15 @@
-function calculateDemeritPoints(speed) {
+function calculateDemeritPoints() {
+    const speedInput = document.getElementById("speedInput");
+    const pointsOutput = document.getElementById("pointsOutput");
+
+    const speed = parseFloat(speedInput.value);
+
     const speedLimit = 70;
     const kmPerDemeritPoint = 5;
     const pointsPerKmAboveLimit = 1;
 
     if (speed <= speedLimit) {
-        console.log("Ok");
-        return 0;
+        pointsOutput.textContent = "Ok";
     } else {
         const kmAboveLimit = speed - speedLimit;
         const demeritPoints = Math.floor(kmAboveLimit / kmPerDemeritPoint) * pointsPerKmAboveLimit;
@@ -19,6 +23,3 @@ function calculateDemeritPoints(speed) {
     }
 }
 
-// Example usage:
-const speed = 80;
-calculateDemeritPoints(speed);
